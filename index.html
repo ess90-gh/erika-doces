@@ -103,6 +103,7 @@ header {
     color: white;
 }
 .pix {
+    display: none; /* Oculta a chave Pix por padrão */
     background: #fff0f5;
     padding: 15px;
     margin-top: 20px;
@@ -140,6 +141,16 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+footer {
+    background: #ff3385;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -166,8 +177,8 @@ header {
 </div>
 
 <div class="card">
-    <img src="Geladinho Gourme.jpg" alt="Geladinho Gourme">
-    <h3>Geladinho Gourme</h3>
+    <img src="geladinho.jpg" alt="Geladinho Gourmet">
+    <h3>Geladinho Gourmet</h3>
     <p class="preco">R$ 4,00</p>
     <a class="botao add" href="#" onclick="adicionar('Geladinho Gourmet', 4)">Adicionar</a>
 </div>
@@ -176,7 +187,7 @@ header {
     <img src="pote.jpg" alt="Pote da Felicidade">
     <h3>Pote da Felicidade</h3>
     <p class="preco">R$ 6,00</p>
-    <a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar</a>
+    <a class="botao add" href="#" onclick="adicionar('Pote da Felicidade', 6)">Adicionar</a>
 </div>
 </section>
 
@@ -192,13 +203,13 @@ header {
 
     <h2>Formas de Pagamento 💳</h2>
     <div class="pagamento-box">
-        <div class="pagamento-item" onclick="selecionarPagamento('Pix')">📱 Pix</div>
+        <div class="pagamento-item" onclick="mostrarPix()">📱 Pix</div>
         <div class="pagamento-item" onclick="selecionarPagamento('Crédito')">💳 Crédito</div>
         <div class="pagamento-item" onclick="selecionarPagamento('Débito')">💳 Débito</div>
     </div>
     <p id="pagamentoSelecionado">Forma de pagamento: Nenhuma</p>
 
-    <div class="pix">
+    <div class="pix" id="chavePix">
         <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
     </div>
 </section>
@@ -206,7 +217,7 @@ header {
 <a class="finalizar" href="#" onclick="finalizarPedido()">Finalizar Pedido 🛒</a>
 
 <footer>
-    <p>© 2026 Érika Doces 💖</p>
+    <p>© 2026 Érika Doces 💖 | Instagram: <a href="https://instagram.com/erikadoces.0" target="_blank">@erikadoces.0</a></p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
@@ -265,6 +276,13 @@ function removerItem(index) {
 function selecionarPagamento(tipo) {
     pagamento = tipo;
     document.getElementById("pagamentoSelecionado").innerText = "Forma de pagamento: " + tipo;
+    document.getElementById("chavePix").style.display = "none";
+}
+
+function mostrarPix() {
+    pagamento = "Pix";
+    document.getElementById("pagamentoSelecionado").innerText = "Forma de pagamento: Pix";
+    document.getElementById("chavePix").style.display = "block";
 }
 
 function selecionarEntrega(tipo) {
