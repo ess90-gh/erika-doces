@@ -124,8 +124,30 @@ footer {
     font-size: 20px;
 }
 
-</style>
+</style><!-- PAGAMENTOS -->
+<section class="pagamento">
+    <h2>Formas de Pagamento 💳</h2>
 
+    <div class="pagamento-box">
+        <div class="pagamento-item">📱 Pix</div>
+        <div class="pagamento-item">💳 Crédito</div>
+        <div class="pagamento-item">💳 Débito</div>
+    </div>
+</section>.pix {
+    background: #fff0f5;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.pix strong {
+    color: #ff3385;
+}
+<div class="pix">
+    <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
+</div>
+    
+    <p>🚚 Entregamos em Igarassu e Abreu e Lima</p>
 </head>
 
 <body>
@@ -154,23 +176,25 @@ footer {
     <img src="https://via.placeholder.com/300">
     <h3>Pudim</h3>
     <p class="preco">R$ 5,00</p>
-    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
+    <<a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar ao carrinho</a>
 </div>
 
 <div class="card">
     <img src="https://via.placeholder.com/300">
     <h3>Bombom</h3>
     <p class="preco">R$ 6,00</p>
-    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
+    <<a class="botao add" href="#" onclick="adicionar('Bombom', 6)">Adicionar ao carrinho</a>
 </div>
 
 <div class="card">
     <img src="https://via.placeholder.com/300">
     <h3>Pote da Felicidade</h3>
     <p class="preco">R$ 6,00</p>
-    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
+    <<a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar ao carrinho</a>
 </div>
-
+<a class="finalizar" href="https://wa.me/5581985017622?text=Olá%20quero%20fazer%20um%20pedido" target="_blank">
+    Finalizar Pedido 💬
+</a>
 </section>
 
 <!-- FORM -->
@@ -181,7 +205,39 @@ footer {
     <input type="tel" placeholder="Telefone">
     <input type="submit" value="Enviar">
 </section>
+<footer>
+    <p>© 2026 Érika Doces 💖</p>
+</footer>
 
+<a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
+
+<!-- SCRIPT DO CARRINHO -->
+<script>
+let carrinho = [];
+
+function adicionar(nome, preco) {
+    carrinho.push({nome, preco});
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    document.getElementById("carrinho").innerText =
+        "Carrinho: " + carrinho.length + " item(s)";
+}
+
+function finalizarPedido() {
+    let mensagem = "Olá, quero pedir:%0A";
+
+    carrinho.forEach(item => {
+        mensagem += "- " + item.nome + " (R$ " + item.preco + ")%0A";
+    });
+
+    window.open("https://wa.me/5581985017622?text=" + mensagem);
+}
+</script>
+
+</body>
+</html>
 <footer>
     <p>© 2026 Érika Doces 💖</p>
 </footer>
