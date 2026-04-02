@@ -115,6 +115,13 @@ header {
     background: #fff0f5;
     padding: 20px;
     border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pagamento-item:hover {
+    background: #ff3385;
+    color: white;
 }
 
 /* PIX */
@@ -158,21 +165,21 @@ header {
 <section class="produtos">
 
 <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="pudim.jpg">
     <h3>Pudim</h3>
     <p class="preco">R$ 5,00</p>
     <a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="bombom.jpg">
     <h3>Bombom</h3>
     <p class="preco">R$ 6,00</p>
     <a class="botao add" href="#" onclick="adicionar('Bombom', 6)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="https://via.placeholder.com/300">
+    <img src="pote.jpg">
     <h3>Pote da Felicidade</h3>
     <p class="preco">R$ 6,00</p>
     <a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar</a>
@@ -188,10 +195,12 @@ header {
     <h2>Formas de Pagamento 💳</h2>
 
     <div class="pagamento-box">
-        <div class="pagamento-item">📱 Pix</div>
-        <div class="pagamento-item">💳 Crédito</div>
-        <div class="pagamento-item">💳 Débito</div>
+        <div class="pagamento-item" onclick="selecionarPagamento('Pix')">📱 Pix</div>
+        <div class="pagamento-item" onclick="selecionarPagamento('Crédito')">💳 Crédito</div>
+        <div class="pagamento-item" onclick="selecionarPagamento('Débito')">💳 Débito</div>
     </div>
+
+    <p id="pagamentoSelecionado">Forma de pagamento: Nenhuma</p>
 
     <div class="pix">
         <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
@@ -208,6 +217,7 @@ header {
 
 <script>
 let carrinho = [];
+let pagamento = "Nenhum";
 
 function adicionar(nome, preco) {
     carrinho.push({nome, preco});
@@ -221,8 +231,27 @@ function atualizarCarrinho() {
         "Carrinho: " + carrinho.length + " item(s) | Total: R$ " + total.toFixed(2);
 }
 
+function selecionarPagamento(tipo) {
+    pagamento = tipo;
+    document.getElementById("pagamentoSelecionado").innerText =
+        "Forma de pagamento: " + tipo;
+}
+
 function finalizarPedido() {
-    let mensagem = "Olá, quero pedir:%0A";
+    if (carrinho.length === 0) {
+        alert("Adicione itens ao carrinho!");
+        return;
+    }
+
+    let nome = prompt("Digite seu nome:");
+    if (!nome) return;
+
+    let numeroPedido = Math.floor(Math.random() * 10000);
+
+    let mensagem = "🛒 *Novo Pedido* %0A";
+    mensagem += "👤 Nome: " + nome + "%0A";
+    mensagem += "📦 Pedido Nº: " + numeroPedido + "%0A%0A";
+
     let total = 0;
 
     carrinho.forEach(item => {
@@ -231,6 +260,7 @@ function finalizarPedido() {
     });
 
     mensagem += "%0ATotal: R$ " + total.toFixed(2);
+    mensagem += "%0A💳 Pagamento: " + pagamento;
 
     window.open("https://wa.me/5581985017622?text=" + mensagem);
 }
