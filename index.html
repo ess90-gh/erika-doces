@@ -7,39 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     background: #fff0f5;
 }
-
-/* HEADER */
 header {
     background: linear-gradient(90deg, #ff3385, #ff66a3);
     color: white;
     text-align: center;
     padding: 30px;
 }
-
-/* BANNER */
 .banner {
-    background: linear-gradient(rgba(255,51,133,0.6), rgba(255,102,163,0.6)),
-    url('https://via.placeholder.com/1200x300');
+    background: linear-gradient(rgba(255,51,133,0.6), rgba(255,102,163,0.6)), url('https://via.placeholder.com/1200x300');
     background-size: cover;
     color: white;
     text-align: center;
     padding: 80px 20px;
 }
-
-/* PRODUTOS */
 .produtos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 30px;
 }
-
 .card {
     background: white;
     border-radius: 15px;
@@ -47,17 +38,14 @@ header {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-
 .card img {
     width: 100%;
     border-radius: 10px;
 }
-
 .preco {
     color: #ff3385;
     font-weight: bold;
 }
-
 .botao {
     display: inline-block;
     margin-top: 10px;
@@ -67,12 +55,9 @@ header {
     border-radius: 8px;
     text-decoration: none;
 }
-
 .add {
     background: #ff66a3;
 }
-
-/* CARRINHO */
 .carrinho {
     position: fixed;
     top: 20px;
@@ -82,9 +67,8 @@ header {
     padding: 10px;
     border-radius: 10px;
     font-size: 14px;
+    z-index: 100;
 }
-
-/* BOTÃO FINAL */
 .finalizar {
     display: block;
     width: 250px;
@@ -96,21 +80,17 @@ header {
     border-radius: 10px;
     text-decoration: none;
 }
-
-/* PAGAMENTO */
 .pagamento {
     background: #fff;
     padding: 40px 20px;
     text-align: center;
 }
-
 .pagamento-box {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
 }
-
 .pagamento-item {
     background: #fff0f5;
     padding: 20px;
@@ -118,21 +98,16 @@ header {
     cursor: pointer;
     transition: 0.3s;
 }
-
 .pagamento-item:hover {
     background: #ff3385;
     color: white;
 }
-
-/* PIX */
 .pix {
     background: #fff0f5;
     padding: 15px;
     margin-top: 20px;
     border-radius: 10px;
 }
-
-/* WHATS */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -143,10 +118,30 @@ header {
     border-radius: 50%;
     text-decoration: none;
 }
-
+.carrinho-itens {
+    background: #fff0f5;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+.carrinho-itens div {
+    margin-bottom: 10px;
+}
+.quantidade-input {
+    width: 50px;
+    padding: 5px;
+    margin: 0 5px;
+}
+.remover-btn {
+    background: #ff3385;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 </style>
 </head>
-
 <body>
 
 <div class="carrinho" id="carrinho">
@@ -163,51 +158,52 @@ header {
 </div>
 
 <section class="produtos">
-
 <div class="card">
-    <img src="pudim.jpg">
+    <img src="pudim.jpg" alt="Pudim">
     <h3>Pudim</h3>
     <p class="preco">R$ 5,00</p>
     <a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="bombom.jpg">
+    <img src="bombom.jpg" alt="Bombom">
     <h3>Bombom</h3>
     <p class="preco">R$ 6,00</p>
     <a class="botao add" href="#" onclick="adicionar('Bombom', 6)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="pote.jpg">
+    <img src="pote.jpg" alt="Pote da Felicidade">
     <h3>Pote da Felicidade</h3>
     <p class="preco">R$ 6,00</p>
     <a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar</a>
 </div>
-
 </section>
 
-<a class="finalizar" href="#" onclick="finalizarPedido()">
-    Finalizar Pedido 🛒
-</a>
+<section class="carrinho-itens" id="itensCarrinho"></section>
 
 <section class="pagamento">
-    <h2>Formas de Pagamento 💳</h2>
+    <h2>Entrega ou Retirada 🚚</h2>
+    <div class="pagamento-box">
+        <div class="pagamento-item" onclick="selecionarEntrega('Retirada no local')">🏠 Retirada no local</div>
+        <div class="pagamento-item" onclick="selecionarEntrega('MotoUber (+ R$ 10,00)')">🛵 MotoUber (+ R$ 10,00)</div>
+    </div>
+    <p id="entregaSelecionada">Tipo: Nenhum</p>
 
+    <h2>Formas de Pagamento 💳</h2>
     <div class="pagamento-box">
         <div class="pagamento-item" onclick="selecionarPagamento('Pix')">📱 Pix</div>
         <div class="pagamento-item" onclick="selecionarPagamento('Crédito')">💳 Crédito</div>
         <div class="pagamento-item" onclick="selecionarPagamento('Débito')">💳 Débito</div>
     </div>
-
     <p id="pagamentoSelecionado">Forma de pagamento: Nenhuma</p>
 
     <div class="pix">
         <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
     </div>
-
-    <p>🚚 Entregamos em Igarassu e Abreu e Lima</p>
 </section>
+
+<a class="finalizar" href="#" onclick="finalizarPedido()">Finalizar Pedido 🛒</a>
 
 <footer>
     <p>© 2026 Érika Doces 💖</p>
@@ -218,23 +214,63 @@ header {
 <script>
 let carrinho = [];
 let pagamento = "Nenhum";
+let entrega = "Nenhuma";
 
 function adicionar(nome, preco) {
-    carrinho.push({nome, preco});
+    let itemExistente = carrinho.find(i => i.nome === nome);
+    if (itemExistente) {
+        itemExistente.quantidade++;
+    } else {
+        carrinho.push({nome, preco, quantidade: 1});
+    }
     atualizarCarrinho();
 }
 
 function atualizarCarrinho() {
-    let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+    let total = 0;
+    let container = document.getElementById("itensCarrinho");
+    container.innerHTML = "";
+
+    carrinho.forEach((item, index) => {
+        let itemTotal = item.preco * item.quantidade;
+        total += itemTotal;
+
+        container.innerHTML += `
+        <div>
+            ${item.nome} - R$ ${item.preco} x 
+            <input type="number" class="quantidade-input" min="1" value="${item.quantidade}" onchange="atualizarQuantidade(${index}, this.value)">
+            = R$ ${itemTotal.toFixed(2)}
+            <button class="remover-btn" onclick="removerItem(${index})">Remover</button>
+        </div>`;
+    });
+
+    if (entrega.includes("MotoUber")) {
+        total += 10;
+    }
 
     document.getElementById("carrinho").innerText =
         "Carrinho: " + carrinho.length + " item(s) | Total: R$ " + total.toFixed(2);
 }
 
+function atualizarQuantidade(index, valor) {
+    carrinho[index].quantidade = parseInt(valor);
+    atualizarCarrinho();
+}
+
+function removerItem(index) {
+    carrinho.splice(index,1);
+    atualizarCarrinho();
+}
+
 function selecionarPagamento(tipo) {
     pagamento = tipo;
-    document.getElementById("pagamentoSelecionado").innerText =
-        "Forma de pagamento: " + tipo;
+    document.getElementById("pagamentoSelecionado").innerText = "Forma de pagamento: " + tipo;
+}
+
+function selecionarEntrega(tipo) {
+    entrega = tipo;
+    document.getElementById("entregaSelecionada").innerText = "Tipo: " + tipo;
+    atualizarCarrinho();
 }
 
 function finalizarPedido() {
@@ -246,18 +282,32 @@ function finalizarPedido() {
     let nome = prompt("Digite seu nome:");
     if (!nome) return;
 
+    let endereco = "";
+    if (entrega.includes("MotoUber")) {
+        endereco = prompt("Digite seu endereço:");
+        if (!endereco) return;
+    }
+
     let numeroPedido = Math.floor(Math.random() * 10000);
 
     let mensagem = "🛒 *Novo Pedido* %0A";
     mensagem += "👤 Nome: " + nome + "%0A";
-    mensagem += "📦 Pedido Nº: " + numeroPedido + "%0A%0A";
+    mensagem += "📦 Pedido Nº: " + numeroPedido + "%0A";
+    mensagem += "🚚 Tipo: " + entrega + "%0A";
+    if (endereco) {
+        mensagem += "📍 Endereço: " + endereco + "%0A";
+    }
 
     let total = 0;
-
     carrinho.forEach(item => {
-        mensagem += "- " + item.nome + " (R$ " + item.preco + ")%0A";
-        total += item.preco;
+        mensagem += "- " + item.nome + " (R$ " + item.preco + ") x " + item.quantidade + "%0A";
+        total += item.preco * item.quantidade;
     });
+
+    if (entrega.includes("MotoUber")) {
+        mensagem += "+ Taxa de entrega (R$ 10,00)%0A";
+        total += 10;
+    }
 
     mensagem += "%0ATotal: R$ " + total.toFixed(2);
     mensagem += "%0A💳 Pagamento: " + pagamento;
