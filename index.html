@@ -22,32 +22,14 @@ header {
     padding: 30px;
 }
 
-/* MENU */
-nav {
-    background: white;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-nav a {
-    text-decoration: none;
-    color: #ff3385;
-    font-weight: bold;
-}
-
 /* BANNER */
 .banner {
-    background: url('https://via.placeholder.com/1200x300') center/cover;
+    background: linear-gradient(rgba(255,51,133,0.6), rgba(255,102,163,0.6)),
+    url('https://via.placeholder.com/1200x300');
+    background-size: cover;
     color: white;
     text-align: center;
     padding: 80px 20px;
-}
-
-.banner h2 {
-    font-size: 40px;
 }
 
 /* PRODUTOS */
@@ -64,11 +46,6 @@ nav a {
     padding: 15px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 .card img {
@@ -79,39 +56,76 @@ nav a {
 .preco {
     color: #ff3385;
     font-weight: bold;
-    font-size: 18px;
 }
 
 .botao {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 15px;
+    padding: 10px;
     background: #ff3385;
     color: white;
     border-radius: 8px;
     text-decoration: none;
 }
 
-/* FORM */
-.formulario {
-    padding: 30px;
+.add {
+    background: #ff66a3;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-}
-
-/* FOOTER */
-footer {
+/* CARRINHO */
+.carrinho {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background: #ff3385;
     color: white;
-    text-align: center;
-    padding: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
 }
 
-/* WHATSAPP */
+/* BOTÃO FINAL */
+.finalizar {
+    display: block;
+    width: 250px;
+    margin: 30px auto;
+    padding: 15px;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* PAGAMENTO */
+.pagamento {
+    background: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.pagamento-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pagamento-item {
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* PIX */
+.pix {
+    background: #fff0f5;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* WHATS */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -121,10 +135,55 @@ footer {
     padding: 15px;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 20px;
 }
 
-</style><!-- PAGAMENTOS -->
+</style>
+</head>
+
+<body>
+
+<div class="carrinho" id="carrinho">
+    Carrinho: 0 item(s) | Total: R$ 0,00
+</div>
+
+<header>
+    <h1>🍮 Érika Doces</h1>
+    <p>Feito com amor 💕</p>
+</header>
+
+<div class="banner">
+    <h2>Os melhores doces 😍</h2>
+</div>
+
+<section class="produtos">
+
+<div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Pudim</h3>
+    <p class="preco">R$ 5,00</p>
+    <a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar</a>
+</div>
+
+<div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Bombom</h3>
+    <p class="preco">R$ 6,00</p>
+    <a class="botao add" href="#" onclick="adicionar('Bombom', 6)">Adicionar</a>
+</div>
+
+<div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Pote da Felicidade</h3>
+    <p class="preco">R$ 6,00</p>
+    <a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar</a>
+</div>
+
+</section>
+
+<a class="finalizar" href="#" onclick="finalizarPedido()">
+    Finalizar Pedido 🛒
+</a>
+
 <section class="pagamento">
     <h2>Formas de Pagamento 💳</h2>
 
@@ -133,85 +192,20 @@ footer {
         <div class="pagamento-item">💳 Crédito</div>
         <div class="pagamento-item">💳 Débito</div>
     </div>
-</section>.pix {
-    background: #fff0f5;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-}
 
-.pix strong {
-    color: #ff3385;
-}
-<div class="pix">
-    <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
-</div>
-    
+    <div class="pix">
+        <p><strong>Chave Pix:</strong> (81) 98501-7622</p>
+    </div>
+
     <p>🚚 Entregamos em Igarassu e Abreu e Lima</p>
-</head>
-
-<body>
-
-<header>
-    <h1>🍮 Érika Doces</h1>
-    <p>Feito com amor 💕</p>
-</header>
-
-<nav>
-    <a href="#">Home</a>
-    <a href="sobre.html" target="_blank">Sobre</a>
-    <a href="contato.html" target="_blank">Contato</a>
-</nav>
-
-<!-- BANNER -->
-<div class="banner">
-    <h2>Os melhores doces da região 😍</h2>
-    <p>Peça agora mesmo!</p>
-</div>
-
-<!-- PRODUTOS -->
-<section class="produtos">
-
-<div class="card">
-    <img src="https://via.placeholder.com/300">
-    <h3>Pudim</h3>
-    <p class="preco">R$ 5,00</p>
-    <<a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar ao carrinho</a>
-</div>
-
-<div class="card">
-    <img src="https://via.placeholder.com/300">
-    <h3>Bombom</h3>
-    <p class="preco">R$ 6,00</p>
-    <<a class="botao add" href="#" onclick="adicionar('Bombom', 6)">Adicionar ao carrinho</a>
-</div>
-
-<div class="card">
-    <img src="https://via.placeholder.com/300">
-    <h3>Pote da Felicidade</h3>
-    <p class="preco">R$ 6,00</p>
-    <<a class="botao add" href="#" onclick="adicionar('Pote da felicidade', 6)">Adicionar ao carrinho</a>
-</div>
-<a class="finalizar" href="https://wa.me/5581985017622?text=Olá%20quero%20fazer%20um%20pedido" target="_blank">
-    Finalizar Pedido 💬
-</a>
 </section>
 
-<!-- FORM -->
-<section class="formulario">
-    <h2>Cadastro</h2>
-    <input type="text" placeholder="Nome">
-    <input type="email" placeholder="Email">
-    <input type="tel" placeholder="Telefone">
-    <input type="submit" value="Enviar">
-</section>
 <footer>
     <p>© 2026 Érika Doces 💖</p>
 </footer>
 
 <a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
 
-<!-- SCRIPT DO CARRINHO -->
 <script>
 let carrinho = [];
 
@@ -221,28 +215,26 @@ function adicionar(nome, preco) {
 }
 
 function atualizarCarrinho() {
+    let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+
     document.getElementById("carrinho").innerText =
-        "Carrinho: " + carrinho.length + " item(s)";
+        "Carrinho: " + carrinho.length + " item(s) | Total: R$ " + total.toFixed(2);
 }
 
 function finalizarPedido() {
     let mensagem = "Olá, quero pedir:%0A";
+    let total = 0;
 
     carrinho.forEach(item => {
         mensagem += "- " + item.nome + " (R$ " + item.preco + ")%0A";
+        total += item.preco;
     });
+
+    mensagem += "%0ATotal: R$ " + total.toFixed(2);
 
     window.open("https://wa.me/5581985017622?text=" + mensagem);
 }
 </script>
-
-</body>
-</html>
-<footer>
-    <p>© 2026 Érika Doces 💖</p>
-</footer>
-
-<a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
 
 </body>
 </html>
