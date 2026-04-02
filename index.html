@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Érika Doces</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -18,13 +17,9 @@ body {
 /* HEADER */
 header {
     background: linear-gradient(90deg, #ff3385, #ff66a3);
+    color: white;
     text-align: center;
-    padding: 20px;
-}
-
-/* LOGO */
-.logo {
-    width: 180px;
+    padding: 30px;
 }
 
 /* MENU */
@@ -44,8 +39,15 @@ nav a {
 }
 
 /* BANNER */
-.banner img {
-    width: 100%;
+.banner {
+    background: url('https://via.placeholder.com/1200x300') center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.banner h2 {
+    font-size: 40px;
 }
 
 /* PRODUTOS */
@@ -62,6 +64,11 @@ nav a {
     padding: 15px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card img {
@@ -72,31 +79,28 @@ nav a {
 .preco {
     color: #ff3385;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .botao {
+    display: inline-block;
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 15px;
     background: #ff3385;
     color: white;
-    border: none;
     border-radius: 8px;
-    cursor: pointer;
+    text-decoration: none;
 }
 
-/* AVALIAÇÕES */
-.avaliacoes {
+/* FORM */
+.formulario {
     padding: 30px;
-    background: #ffe6f0;
-    text-align: center;
 }
 
-.avaliacao {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 10px auto;
-    max-width: 400px;
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
 }
 
 /* FOOTER */
@@ -117,6 +121,7 @@ footer {
     padding: 15px;
     border-radius: 50%;
     text-decoration: none;
+    font-size: 20px;
 }
 
 </style>
@@ -126,69 +131,55 @@ footer {
 <body>
 
 <header>
-    <img class="logo" src="https://i.imgur.com/8Km9tLL.png" alt="Logo">
+    <h1>🍮 Érika Doces</h1>
+    <p>Feito com amor 💕</p>
 </header>
 
 <nav>
     <a href="#">Home</a>
-    <a href="#">Sobre</a>
-    <a href="#">Contato</a>
+    <a href="sobre.html" target="_blank">Sobre</a>
+    <a href="contato.html" target="_blank">Contato</a>
 </nav>
 
 <!-- BANNER -->
 <div class="banner">
-    <img src="https://i.imgur.com/Z6XbKQp.png">
+    <h2>Os melhores doces da região 😍</h2>
+    <p>Peça agora mesmo!</p>
 </div>
 
 <!-- PRODUTOS -->
 <section class="produtos">
 
 <div class="card">
-    <<img src="pudim.jpg">
+    <img src="https://via.placeholder.com/300">
     <h3>Pudim</h3>
     <p class="preco">R$ 5,00</p>
-    <button class="botao" onclick="comprar('Pudim','R$ 5,00')">Comprar</button>
+    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
 </div>
 
 <div class="card">
-    <<img src="geladinho.jpg">
-    <h3>Geladinho Gourmet</h3>
-    <p class="preco">R$ 4,00</p>
-    <button class="botao" onclick="comprar('Geladinho Gourmet','R$ 4,00')">Comprar</button>
-</div>
-
-<div class="card">
-    <<img src="bombom.jpg">
+    <img src="https://via.placeholder.com/300">
     <h3>Bombom</h3>
     <p class="preco">R$ 6,00</p>
-    <button class="botao" onclick="comprar('Bombom','R$ 6,00')">Comprar</button>
+    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
+</div>
+
+<div class="card">
+    <img src="https://via.placeholder.com/300">
+    <h3>Pote da Felicidade</h3>
+    <p class="preco">R$ 6,00</p>
+    <a class="botao" href="https://wa.me/5581985017622" target="_blank">Comprar</a>
 </div>
 
 </section>
 
-<!-- AVALIAÇÕES -->
-<section class="avaliacoes">
-
-<h2>💖 Avaliações dos Clientes</h2>
-
-<div class="avaliacao">
-    ⭐⭐⭐⭐⭐ <br>
-    "O melhor pudim da vida 😍"<br>
-    <strong>- Maria</strong>
-</div>
-
-<div class="avaliacao">
-    ⭐⭐⭐⭐⭐ <br>
-    "Muito capricho e sabor maravilhoso 💕"<br>
-    <strong>- João</strong>
-</div>
-
-<div class="avaliacao">
-    ⭐⭐⭐⭐⭐ <br>
-    "Entrega rápida e tudo perfeito 😋"<br>
-    <strong>- Ana</strong>
-</div>
-
+<!-- FORM -->
+<section class="formulario">
+    <h2>Cadastro</h2>
+    <input type="text" placeholder="Nome">
+    <input type="email" placeholder="Email">
+    <input type="tel" placeholder="Telefone">
+    <input type="submit" value="Enviar">
 </section>
 
 <footer>
@@ -196,15 +187,6 @@ footer {
 </footer>
 
 <a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
-
-<script>
-function comprar(produto, preco){
-    let mensagem = `Olá! Quero comprar: ${produto} - ${preco}`;
-    let telefone = "5581985017622";
-    let url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, "_blank");
-}
-</script>
 
 </body>
 </html>
