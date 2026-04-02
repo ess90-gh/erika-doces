@@ -23,7 +23,12 @@ header {
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
+}
+.banner img {
+    width: 220px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
 }
 .produtos {
     display: grid;
@@ -37,6 +42,10 @@ header {
     padding: 15px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
 }
 .card img {
     width: 100%;
@@ -49,11 +58,15 @@ header {
 .botao {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px;
-    background: #ff3385;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff3385, #ff66a3);
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     text-decoration: none;
+    transition: 0.3s;
+}
+.botao:hover {
+    transform: scale(1.05);
 }
 .add {
     background: #ff66a3;
@@ -103,7 +116,7 @@ header {
     color: white;
 }
 .pix {
-    display: none; /* Oculta a chave Pix por padrão */
+    display: none;
     background: #fff0f5;
     padding: 15px;
     margin-top: 20px;
@@ -153,6 +166,7 @@ footer a {
 }
 </style>
 </head>
+
 <body>
 
 <div class="carrinho" id="carrinho">
@@ -165,29 +179,30 @@ footer a {
 </header>
 
 <div class="banner">
-    <h2>Os melhores doces 😍</h2>
+    <img src="logo.png" alt="Érika Doces Gourmet">
+    <p>Doces caseiros que derretem na boca 😍🍮</p>
 </div>
 
 <section class="produtos">
 <div class="card">
-    <img src="pudim.jpg" alt="Pudim">
-    <h3>Pudim</h3>
+    <img src="pudim.jpg">
+    <h3>pudim</h3>
     <p class="preco">R$ 5,00</p>
-    <a class="botao add" href="#" onclick="adicionar('Pudim', 5)">Adicionar</a>
+    <a class="botao add" onclick="adicionar('pudim', 5)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="geladinho.jpg" alt="Geladinho Gourmet">
-    <h3>Geladinho Gourmet</h3>
+    <img src="geladinho.jpg">
+    <h3>geladinho gourmet</h3>
     <p class="preco">R$ 4,00</p>
-    <a class="botao add" href="#" onclick="adicionar('Geladinho Gourmet', 4)">Adicionar</a>
+    <a class="botao add" onclick="adicionar('geladinho gourmet', 4)">Adicionar</a>
 </div>
 
 <div class="card">
-    <img src="pote.jpg" alt="Pote da Felicidade">
-    <h3>Pote da Felicidade</h3>
+    <img src="pote.jpg">
+    <h3>pote da felicidade</h3>
     <p class="preco">R$ 6,00</p>
-    <a class="botao add" href="#" onclick="adicionar('Pote da Felicidade', 6)">Adicionar</a>
+    <a class="botao add" onclick="adicionar('pote da felicidade', 6)">Adicionar</a>
 </div>
 </section>
 
@@ -214,7 +229,7 @@ footer a {
     </div>
 </section>
 
-<a class="finalizar" href="#" onclick="finalizarPedido()">Finalizar Pedido 🛒</a>
+<a class="finalizar" onclick="finalizarPedido()">Finalizar Pedido 🛒</a>
 
 <footer>
     <p>© 2026 Érika Doces 💖 | Instagram: <a href="https://instagram.com/erikadoces.0" target="_blank">@erikadoces.0</a></p>
@@ -234,17 +249,20 @@ function adicionar(nome, preco) {
     } else {
         carrinho.push({nome, preco, quantidade: 1});
     }
+    alert(nome + " adicionado ao carrinho 💖");
     atualizarCarrinho();
 }
 
 function atualizarCarrinho() {
     let total = 0;
+    let quantidadeTotal = 0;
     let container = document.getElementById("itensCarrinho");
     container.innerHTML = "";
 
     carrinho.forEach((item, index) => {
         let itemTotal = item.preco * item.quantidade;
         total += itemTotal;
+        quantidadeTotal += item.quantidade;
 
         container.innerHTML += `
         <div>
@@ -260,7 +278,7 @@ function atualizarCarrinho() {
     }
 
     document.getElementById("carrinho").innerText =
-        "Carrinho: " + carrinho.length + " item(s) | Total: R$ " + total.toFixed(2);
+        "Carrinho: " + quantidadeTotal + " itens | Total: R$ " + total.toFixed(2);
 }
 
 function atualizarQuantidade(index, valor) {
@@ -308,17 +326,17 @@ function finalizarPedido() {
 
     let numeroPedido = Math.floor(Math.random() * 10000);
 
-    let mensagem = "🛒 *Novo Pedido* %0A";
-    mensagem += "👤 Nome: " + nome + "%0A";
-    mensagem += "📦 Pedido Nº: " + numeroPedido + "%0A";
-    mensagem += "🚚 Tipo: " + entrega + "%0A";
+    let mensagem = "🍮 *Pedido - Érika Doces* %0A%0A";
+    mensagem += "👤 *Nome:* " + nome + "%0A";
+    mensagem += "📦 *Pedido Nº:* " + numeroPedido + "%0A";
+    mensagem += "🚚 *Entrega:* " + entrega + "%0A";
     if (endereco) {
-        mensagem += "📍 Endereço: " + endereco + "%0A";
+        mensagem += "📍 *Endereço:* " + endereco + "%0A";
     }
 
     let total = 0;
     carrinho.forEach(item => {
-        mensagem += "- " + item.nome + " (R$ " + item.preco + ") x " + item.quantidade + "%0A";
+        mensagem += "🍬 " + item.nome + " x" + item.quantidade + "%0A";
         total += item.preco * item.quantidade;
     });
 
