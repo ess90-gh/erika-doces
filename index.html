@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Érika Doces</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #fff0f5;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #ff3385, #ff66a3);
+    text-align: center;
+    padding: 20px;
+}
+
+/* LOGO */
+.logo {
+    width: 180px;
+}
+
+/* MENU */
+nav {
+    background: white;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav a {
+    text-decoration: none;
+    color: #ff3385;
+    font-weight: bold;
+}
+
+/* BANNER */
+.banner img {
+    width: 100%;
+}
+
+/* PRODUTOS */
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.preco {
+    color: #ff3385;
+    font-weight: bold;
+}
+
+.botao {
+    margin-top: 10px;
+    padding: 10px;
+    background: #ff3385;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* AVALIAÇÕES */
+.avaliacoes {
+    padding: 30px;
+    background: #ffe6f0;
+    text-align: center;
+}
+
+.avaliacao {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 400px;
+}
+
+/* FOOTER */
+footer {
+    background: #ff3385;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <img class="logo" src="https://i.imgur.com/8Km9tLL.png" alt="Logo">
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contato</a>
+</nav>
+
+<!-- BANNER -->
+<div class="banner">
+    <img src="https://i.imgur.com/Z6XbKQp.png">
+</div>
+
+<!-- PRODUTOS -->
+<section class="produtos">
+
+<div class="card">
+    <img src="https://i.imgur.com/1bX5QH6.jpg">
+    <h3>Pudim</h3>
+    <p class="preco">R$ 5,00</p>
+    <button class="botao" onclick="comprar('Pudim','R$ 5,00')">Comprar</button>
+</div>
+
+<div class="card">
+    <img src="https://i.imgur.com/3ZQ3Z4R.jpg">
+    <h3>Geladinho Gourmet</h3>
+    <p class="preco">R$ 4,00</p>
+    <button class="botao" onclick="comprar('Geladinho Gourmet','R$ 4,00')">Comprar</button>
+</div>
+
+<div class="card">
+    <img src="https://i.imgur.com/Y6XQKQH.jpg">
+    <h3>Bombom</h3>
+    <p class="preco">R$ 6,00</p>
+    <button class="botao" onclick="comprar('Bombom','R$ 6,00')">Comprar</button>
+</div>
+
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="avaliacoes">
+
+<h2>💖 Avaliações dos Clientes</h2>
+
+<div class="avaliacao">
+    ⭐⭐⭐⭐⭐ <br>
+    "O melhor pudim da vida 😍"<br>
+    <strong>- Maria</strong>
+</div>
+
+<div class="avaliacao">
+    ⭐⭐⭐⭐⭐ <br>
+    "Muito capricho e sabor maravilhoso 💕"<br>
+    <strong>- João</strong>
+</div>
+
+<div class="avaliacao">
+    ⭐⭐⭐⭐⭐ <br>
+    "Entrega rápida e tudo perfeito 😋"<br>
+    <strong>- Ana</strong>
+</div>
+
+</section>
+
+<footer>
+    <p>© 2026 Érika Doces 💖</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/5581985017622" target="_blank">💬</a>
+
+<script>
+function comprar(produto, preco){
+    let mensagem = `Olá! Quero comprar: ${produto} - ${preco}`;
+    let telefone = "5581985017622";
+    let url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
